@@ -3,6 +3,7 @@ package com.splab;
 import com.splab.abstractFactory.*;
 //import com.splab.abstractFactory.OfficeAdmin;
 //import com.splab.abstractFactory.UserClient;
+import com.splab.singletone.ProductionManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +30,34 @@ public class SpLabApplication {
 //            System.out.print("TSist ");
 //            TSist.languageType();
 //            ----------Factory method
+
+
+
+
+
+//            ProductionManager firstManager = ProductionManager.getInstance("Ali", "Baba");
+//            firstManager.manageProduction();
+//
+//            ProductionManager secondManager = ProductionManager.getInstance("Huba", "Buba");
+//            secondManager.manageProduction();
+            /* will not take new arguments, because second manager is also Ali Baba
+            --------------this is example of singleton
+            */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
