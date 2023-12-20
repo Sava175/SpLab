@@ -1,13 +1,10 @@
 package com.splab;
 
-import com.splab.abstractFactory.*;
 //import com.splab.abstractFactory.OfficeAdmin;
 //import com.splab.abstractFactory.UserClient;
-import com.splab.decorator.BasicHDog;
-import com.splab.decorator.HotDog;
-import com.splab.decorator.OnionHDog;
-import com.splab.decorator.PigHDog;
-import com.splab.singletone.ProductionManager;
+import com.splab.adapter.NewUser;
+import com.splab.adapter.OldUser;
+import com.splab.adapter.UserAdapter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -51,10 +48,6 @@ public class SpLabApplication {
 
 
 
-
-
-
-
 //            BasicHDog basicHDog = new BasicHDog();
 //            System.out.println(basicHDog.getIngredients());
 //            HotDog onionHDog = new OnionHDog(basicHDog);
@@ -63,6 +56,15 @@ public class SpLabApplication {
 //            System.out.println(onionHDog.getIngredients());
 //            System.out.println(pigHDog.getIngredients());
 //            ---------Decorator pattern
+
+
+
+
+//            OldUser oldUser = new OldUser("Alex", 35);
+//            NewUser adapter = new UserAdapter(oldUser);
+//            System.out.println("User Name: " + adapter.getUserName());
+//            System.out.println("Age: " + adapter.getAge());
+//            ------adapter
 
 
         };
