@@ -5,6 +5,8 @@ package com.splab;
 import com.splab.adapter.NewUser;
 import com.splab.adapter.OldUser;
 import com.splab.adapter.UserAdapter;
+import com.splab.observer.NewsAgency;
+import com.splab.observer.NewsChannel;
 import com.splab.strategy.BubbleSort;
 import com.splab.strategy.SelectionSort;
 import com.splab.strategy.Sorter;
@@ -88,6 +90,28 @@ public class SpLabApplication {
 //            System.out.println(Arrays.toString(otherNumbers));
 //
 //            -----------strategy
+
+
+
+
+
+
+
+
+//            NewsAgency newsAgency = new NewsAgency();
+//            NewsChannel channel1 = new NewsChannel("first");
+//            NewsChannel channel2 = new NewsChannel("second");
+//
+//            newsAgency.addObserver(channel1);
+//            newsAgency.addObserver(channel2);
+//
+//            newsAgency.setNews("everything is good");
+//            newsAgency.setNews("and now is much more better");
+//
+//            newsAgency.setNews("now everything s just super");
+//            System.out.println(newsAgency.getObservers());
+//
+//            ----------observer
 
 
 
