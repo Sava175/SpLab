@@ -3,6 +3,10 @@ package com.splab;
 import com.splab.abstractFactory.*;
 //import com.splab.abstractFactory.OfficeAdmin;
 //import com.splab.abstractFactory.UserClient;
+import com.splab.decorator.BasicHDog;
+import com.splab.decorator.HotDog;
+import com.splab.decorator.OnionHDog;
+import com.splab.decorator.PigHDog;
 import com.splab.singletone.ProductionManager;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -51,18 +55,14 @@ public class SpLabApplication {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//            BasicHDog basicHDog = new BasicHDog();
+//            System.out.println(basicHDog.getIngredients());
+//            HotDog onionHDog = new OnionHDog(basicHDog);
+//            HotDog pigHDog = new PigHDog(onionHDog);
+//
+//            System.out.println(onionHDog.getIngredients());
+//            System.out.println(pigHDog.getIngredients());
+//            ---------Decorator pattern
 
 
         };
