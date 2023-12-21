@@ -2,10 +2,15 @@ package com.splab;
 
 import com.splab.patterns.bridge.*;
 
+import com.splab.patterns.composite.Oder;
+import com.splab.patterns.composite.ToDrink;
+import com.splab.patterns.composite.ToEat;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 
 @SpringBootApplication
@@ -118,6 +123,12 @@ public class SpLabApplication {
 //            borscht.makeOrder();
 //            sausage.makeOrder();
 //            -------bridge pattern
+
+//            ToDrink cola = new ToDrink("cola");
+//            ToEat chocolate = new ToEat("chocolate");
+//            Oder table1 = new Oder(List.of(cola, chocolate));
+//            System.out.println(table1);
+//            --------composite
 
 
         };
