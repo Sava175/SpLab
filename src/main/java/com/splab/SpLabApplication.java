@@ -5,11 +5,13 @@ package com.splab;
 import com.splab.adapter.NewUser;
 import com.splab.adapter.OldUser;
 import com.splab.adapter.UserAdapter;
+import com.splab.builder.Donner;
 import com.splab.observer.NewsAgency;
 import com.splab.observer.NewsChannel;
 import com.splab.strategy.BubbleSort;
 import com.splab.strategy.SelectionSort;
 import com.splab.strategy.Sorter;
+import lombok.Builder;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -114,38 +116,14 @@ public class SpLabApplication {
 //            ----------observer
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//            Donner kebab = Donner.builder()
+//                    .id(1)
+//                    .bunType("white")
+//                    .sausageType("with cheese")
+//                    .cost(5)
+//                    .build();
+//            System.out.println(kebab);
+//            -------builder
 
 
         };
