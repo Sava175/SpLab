@@ -1,21 +1,12 @@
 package com.splab;
 
-import com.splab.patterns.abstrFactory.*;
-import com.splab.patterns.adapter.*;
-import com.splab.patterns.builder.Donner;
-import com.splab.patterns.decorator.*;;
-import com.splab.patterns.factoryMethod.*;
-import com.splab.patterns.observer.*;
-import com.splab.patterns.prototype.TShirt;
-import com.splab.patterns.singletone.ProductionManager;
-import com.splab.patterns.strategy.*;
+import com.splab.patterns.bridge.*;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
 
 @SpringBootApplication
 public class SpLabApplication {
@@ -122,6 +113,11 @@ public class SpLabApplication {
 //            --------abstractFactory
 
 
+//            DishToOrder borscht = new Borscht(new UkrainianCuisine());
+//            DishToOrder sausage = new Sausage(new GermanCuisine());
+//            borscht.makeOrder();
+//            sausage.makeOrder();
+//            -------bridge pattern
 
 
         };

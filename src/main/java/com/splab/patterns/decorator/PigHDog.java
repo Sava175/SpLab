@@ -2,7 +2,6 @@ package com.splab.patterns.decorator;
 
 import lombok.Data;
 
-
 @Data
 public class PigHDog implements HotDog{
     private final HotDog decoratedHDog;
