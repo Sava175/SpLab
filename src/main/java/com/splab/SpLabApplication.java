@@ -28,98 +28,98 @@ public class SpLabApplication {
         return args -> {
 
 
-            Company useJava = new JavaCompany();
-            Programmer javist = useJava.createProgrammer();
-            System.out.print("javist ");
-            javist.languageType();
-
-            Company useTS = new TSCompany();
-            Programmer TSist = useTS.createProgrammer();
-            System.out.print("TSist ");
-            TSist.languageType();
+//            Company useJava = new JavaCompany();
+//            Programmer javist = useJava.createProgrammer();
+//            System.out.print("javist ");
+//            javist.languageType();
+//
+//            Company useTS = new TSCompany();
+//            Programmer TSist = useTS.createProgrammer();
+//            System.out.print("TSist ");
+//            TSist.languageType();
 //            ----------Factory method
 
 
 
-            ProductionManager firstManager = ProductionManager.getInstance("Ali", "Baba");
-            firstManager.manageProduction();
-
-            ProductionManager secondManager = ProductionManager.getInstance("Huba", "Buba");
-            secondManager.manageProduction();
+//            ProductionManager firstManager = ProductionManager.getInstance("Ali", "Baba");
+//            firstManager.manageProduction();
+//
+//            ProductionManager secondManager = ProductionManager.getInstance("Huba", "Buba");
+//            secondManager.manageProduction();
             /* will not take new arguments, because second manager is also Ali Baba
             --------------this is example of singleton
             */
 
 
-            BasicHDog basicHDog = new BasicHDog();
-            System.out.println(basicHDog.getIngredients());
-            HotDog onionHDog = new OnionHDog(basicHDog);
-            HotDog pigHDog = new PigHDog(onionHDog);
-
-            System.out.println(onionHDog.getIngredients());
-            System.out.println(pigHDog.getIngredients());
+//            BasicHDog basicHDog = new BasicHDog();
+//            System.out.println(basicHDog.getIngredients());
+//            HotDog onionHDog = new OnionHDog(basicHDog);
+//            HotDog pigHDog = new PigHDog(onionHDog);
+//
+//            System.out.println(onionHDog.getIngredients());
+//            System.out.println(pigHDog.getIngredients());
 //            ---------Decorator pattern
 
 
-            OldUser oldUser = new OldUser("Alex", 35);
-            NewUser adapter = new UserAdapter(oldUser);
-            System.out.println("User Name: " + adapter.getUserName());
-            System.out.println("Age: " + adapter.getAge());
+//            OldUser oldUser = new OldUser("Alex", 35);
+//            NewUser adapter = new UserAdapter(oldUser);
+//            System.out.println("User Name: " + adapter.getUserName());
+//            System.out.println("Age: " + adapter.getAge());
 //            ------adapter
 
 
 
-            int[] numbers = {34,6,72,3,49,67,0,98,98,6,98,34};
-            Sorter sorter = new Sorter();
-            sorter.setSortingStrategy(new BubbleSort());
-            sorter.performSort(numbers);
-            System.out.println(Arrays.toString(numbers));
-
-            int[] otherNumbers = {34,6,72,3,49,67,0,98,98,6,98,34};
-            sorter.setSortingStrategy(new SelectionSort());
-            sorter.performSort(otherNumbers);
-            System.out.println(Arrays.toString(otherNumbers));
+//            int[] numbers = {34,6,72,3,49,67,0,98,98,6,98,34};
+//            Sorter sorter = new Sorter();
+//            sorter.setSortingStrategy(new BubbleSort());
+//            sorter.performSort(numbers);
+//            System.out.println(Arrays.toString(numbers));
+//
+//            int[] otherNumbers = {34,6,72,3,49,67,0,98,98,6,98,34};
+//            sorter.setSortingStrategy(new SelectionSort());
+//            sorter.performSort(otherNumbers);
+//            System.out.println(Arrays.toString(otherNumbers));
 //            -----------strategy
 
 
 
-            NewsAgency newsAgency = new NewsAgency();
-            NewsChannel channel1 = new NewsChannel("first");
-            NewsChannel channel2 = new NewsChannel("second");
-
-            newsAgency.addObserver(channel1);
-            newsAgency.addObserver(channel2);
-
-            newsAgency.setNews("everything is good");
-            newsAgency.setNews("and now is much more better");
-
-            newsAgency.setNews("now everything s just super");
-            System.out.println(newsAgency.getObservers());
+//            NewsAgency newsAgency = new NewsAgency();
+//            NewsChannel channel1 = new NewsChannel("first");
+//            NewsChannel channel2 = new NewsChannel("second");
+//
+//            newsAgency.addObserver(channel1);
+//            newsAgency.addObserver(channel2);
+//
+//            newsAgency.setNews("everything is good");
+//            newsAgency.setNews("and now is much more better");
+//
+//            newsAgency.setNews("now everything s just super");
+//            System.out.println(newsAgency.getObservers());
 //            ----------observer
 
-
-            Donner kebab = Donner.builder()
-                    .id(1)
-                    .bunType("white")
-                    .sausageType("with cheese")
-                    .cost(5)
-                    .build();
-            System.out.println(kebab);
+//
+//            Donner kebab = Donner.builder()
+//                    .id(1)
+//                    .bunType("white")
+//                    .sausageType("with cheese")
+//                    .cost(5)
+//                    .build();
+//            System.out.println(kebab);
 //            -------builder
 
 
-            TShirt xlSize = new TShirt("black", "for the best man", 35);
-            TShirt cloneThat = xlSize.copy();
-            cloneThat.setColor("Red");
-            System.out.println(xlSize);
-            System.out.println(cloneThat);
+//            TShirt xlSize = new TShirt("black", "for the best man", 35);
+//            TShirt cloneThat = xlSize.copy();
+//            cloneThat.setColor("Red");
+//            System.out.println(xlSize);
+//            System.out.println(cloneThat);
 //            -------prototype
 
 
-            IceCreamLover iceCreamClient = new IceCreamLover();
-            iceCreamClient.enjoyIceCream(new AppleIceFactory());
-            iceCreamClient.enjoyIceCream(new ChocoIceFactory());
-//            --------abstrFactory
+//            IceCreamLover iceCreamClient = new IceCreamLover();
+//            iceCreamClient.enjoyIceCream(new AppleIceFactory());
+//            iceCreamClient.enjoyIceCream(new ChocoIceFactory());
+//            --------abstractFactory
 
 
 
