@@ -5,6 +5,7 @@ import com.splab.patterns.bridge.*;
 import com.splab.patterns.composite.Oder;
 import com.splab.patterns.composite.ToDrink;
 import com.splab.patterns.composite.ToEat;
+import com.splab.patterns.facade.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -129,6 +130,19 @@ public class SpLabApplication {
 //            Oder table1 = new Oder(List.of(cola, chocolate));
 //            System.out.println(table1);
 //            --------composite
+
+
+
+//            Office office = new Office();
+//            office.getRooms().addAll(List.of(new Toilet(), new Kitchen(),new WorkCabinet()));
+//            for(Room room:office.getRooms()){
+//                room.roomPurpose();
+//            }
+//            -------facade
+
+
+
+
 
 
         };
