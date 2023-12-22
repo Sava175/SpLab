@@ -1,6 +1,5 @@
 package com.splab.patterns.proxy;
 
-
 public class RealFoodOrder implements FoodOrder {
     private final String foodItem;
 

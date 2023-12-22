@@ -2,6 +2,10 @@ package com.splab;
 
 import com.splab.patterns.bridge.*;
 
+import com.splab.patterns.chainOfRespons.EngineDiagnosticHandler;
+import com.splab.patterns.chainOfRespons.OilChangeHandler;
+import com.splab.patterns.chainOfRespons.ServiceHandler;
+import com.splab.patterns.chainOfRespons.TireRotationHandler;
 import com.splab.patterns.composite.Oder;
 import com.splab.patterns.composite.ToDrink;
 import com.splab.patterns.composite.ToEat;
@@ -157,6 +161,42 @@ public class SpLabApplication {
 //            foodOrder1.deliver();
 //            foodOrder2.deliver();
 //            -----proxy
+
+
+
+//            ServiceHandler oilChangeHandler = new OilChangeHandler();
+//            ServiceHandler tireRotationHandler = new TireRotationHandler();
+//            ServiceHandler engineDiagnosticHandler = new EngineDiagnosticHandler();
+//
+//            oilChangeHandler.setNextHandler(tireRotationHandler);
+//            tireRotationHandler.setNextHandler(engineDiagnosticHandler);
+//
+//            String requestedService = "Tire Rotation";
+//            oilChangeHandler.performService(requestedService);
+//            -------chain of Responsobility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         };
