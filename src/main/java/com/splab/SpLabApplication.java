@@ -1,5 +1,9 @@
 package com.splab;
 
+import com.splab.patterns.Command.Car;
+import com.splab.patterns.Command.RemoteControl;
+import com.splab.patterns.Command.StartCarCommand;
+import com.splab.patterns.Command.StopCarCommand;
 import com.splab.patterns.bridge.*;
 
 import com.splab.patterns.chainOfRespons.EngineDiagnosticHandler;
@@ -177,7 +181,15 @@ public class SpLabApplication {
 
 
 
-
+//            Car car = new Car();
+//            StartCarCommand startCommand = new StartCarCommand(car);
+//            StopCarCommand stopCommand = new StopCarCommand(car);
+//            RemoteControl remote = new RemoteControl();
+//            remote.setCommand(startCommand);
+//            remote.pressButton();
+//            remote.setCommand(stopCommand);
+//            remote.pressButton();
+//            -------command pattern
 
 
 
