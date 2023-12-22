@@ -6,6 +6,9 @@ import com.splab.patterns.composite.Oder;
 import com.splab.patterns.composite.ToDrink;
 import com.splab.patterns.composite.ToEat;
 import com.splab.patterns.facade.*;
+import com.splab.patterns.flyweight.Person;
+import com.splab.patterns.proxy.FoodOrder;
+import com.splab.patterns.proxy.FoodOrderProxy;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -141,8 +144,19 @@ public class SpLabApplication {
 //            -------facade
 
 
+//            Person first = Person.createPerson("Alex", "Dev");
+//            Person second = Person.createPerson("Vasyl", "Dev");
+//            System.out.println(first);
+//            System.out.println(second);
+//            -----flyweight
 
 
+
+//            FoodOrder foodOrder1 = new FoodOrderProxy("Burger");
+//            FoodOrder foodOrder2 = new FoodOrderProxy("Sushi");
+//            foodOrder1.deliver();
+//            foodOrder2.deliver();
+//            -----proxy
 
 
         };
