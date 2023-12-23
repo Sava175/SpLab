@@ -1,28 +1,12 @@
 package com.splab;
 
-import com.splab.patterns.Command.Car;
-import com.splab.patterns.Command.RemoteControl;
-import com.splab.patterns.Command.StartCarCommand;
-import com.splab.patterns.Command.StopCarCommand;
-import com.splab.patterns.bridge.*;
-
-import com.splab.patterns.chainOfRespons.EngineDiagnosticHandler;
-import com.splab.patterns.chainOfRespons.OilChangeHandler;
-import com.splab.patterns.chainOfRespons.ServiceHandler;
-import com.splab.patterns.chainOfRespons.TireRotationHandler;
-import com.splab.patterns.composite.Oder;
-import com.splab.patterns.composite.ToDrink;
-import com.splab.patterns.composite.ToEat;
-import com.splab.patterns.facade.*;
-import com.splab.patterns.flyweight.Person;
-import com.splab.patterns.proxy.FoodOrder;
-import com.splab.patterns.proxy.FoodOrderProxy;
+import com.splab.patterns.template.Breakfast;
+import com.splab.patterns.template.BeckonBreakfast;
+import com.splab.patterns.template.SausageBreakfast;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.List;
 
 
 @SpringBootApplication
@@ -34,6 +18,21 @@ public class SpLabApplication {
     @Bean
     CommandLineRunner init (){
         return args -> {
+
+//            IceCreamLover iceCreamClient = new IceCreamLover();
+//            iceCreamClient.enjoyIceCream(new AppleIceFactory());
+//            iceCreamClient.enjoyIceCream(new ChocoIceFactory());
+//            --------abstractFactory
+
+
+
+//            OldUser oldUser = new OldUser("Alex", 35);
+//            NewUser adapter = new UserAdapter(oldUser);
+//            System.out.println("User Name: " + adapter.getUserName());
+//            System.out.println("Age: " + adapter.getAge());
+//            ------adapter
+
+
 
 
 //            Company useJava = new JavaCompany();
@@ -49,14 +48,17 @@ public class SpLabApplication {
 
 
 
+
+
 //            ProductionManager firstManager = ProductionManager.getInstance("Ali", "Baba");
 //            firstManager.manageProduction();
 //
 //            ProductionManager secondManager = ProductionManager.getInstance("Huba", "Buba");
 //            secondManager.manageProduction();
-            /* will not take new arguments, because second manager is also Ali Baba
-            --------------this is example of singleton
-            */
+//            --------------this is example of singleton
+
+
+
 
 
 //            BasicHDog basicHDog = new BasicHDog();
@@ -69,11 +71,7 @@ public class SpLabApplication {
 //            ---------Decorator pattern
 
 
-//            OldUser oldUser = new OldUser("Alex", 35);
-//            NewUser adapter = new UserAdapter(oldUser);
-//            System.out.println("User Name: " + adapter.getUserName());
-//            System.out.println("Age: " + adapter.getAge());
-//            ------adapter
+
 
 
 
@@ -91,6 +89,8 @@ public class SpLabApplication {
 
 
 
+
+
 //            NewsAgency newsAgency = new NewsAgency();
 //            NewsChannel channel1 = new NewsChannel("first");
 //            NewsChannel channel2 = new NewsChannel("second");
@@ -105,6 +105,9 @@ public class SpLabApplication {
 //            System.out.println(newsAgency.getObservers());
 //            ----------observer
 
+
+
+
 //
 //            Donner kebab = Donner.builder()
 //                    .id(1)
@@ -113,7 +116,10 @@ public class SpLabApplication {
 //                    .cost(5)
 //                    .build();
 //            System.out.println(kebab);
-//            -------builder
+//            -------builder-------
+
+
+
 
 
 //            TShirt xlSize = new TShirt("black", "for the best man", 35);
@@ -124,10 +130,8 @@ public class SpLabApplication {
 //            -------prototype
 
 
-//            IceCreamLover iceCreamClient = new IceCreamLover();
-//            iceCreamClient.enjoyIceCream(new AppleIceFactory());
-//            iceCreamClient.enjoyIceCream(new ChocoIceFactory());
-//            --------abstractFactory
+
+
 
 
 //            DishToOrder borscht = new Borscht(new UkrainianCuisine());
@@ -135,6 +139,9 @@ public class SpLabApplication {
 //            borscht.makeOrder();
 //            sausage.makeOrder();
 //            -------bridge pattern
+
+
+
 
 //            ToDrink cola = new ToDrink("cola");
 //            ToEat chocolate = new ToEat("chocolate");
@@ -156,7 +163,7 @@ public class SpLabApplication {
 //            Person second = Person.createPerson("Vasyl", "Dev");
 //            System.out.println(first);
 //            System.out.println(second);
-//            -----flyweight
+//            -----flyweight-----
 
 
 
@@ -165,6 +172,8 @@ public class SpLabApplication {
 //            foodOrder1.deliver();
 //            foodOrder2.deliver();
 //            -----proxy
+
+
 
 
 
@@ -181,6 +190,8 @@ public class SpLabApplication {
 
 
 
+
+
 //            Car car = new Car();
 //            StartCarCommand startCommand = new StartCarCommand(car);
 //            StopCarCommand stopCommand = new StopCarCommand(car);
@@ -190,6 +201,84 @@ public class SpLabApplication {
 //            remote.setCommand(stopCommand);
 //            remote.pressButton();
 //            -------command pattern
+
+
+
+
+
+
+//            List<SomeClass> some = List.of(new SomeClass("first"), new SomeClass("second"), new SomeClass("third"));
+//            Iterator<SomeClass> iterator = some.iterator();
+//            while (iterator.hasNext()){
+//                SomeClass someClass = iterator.next();
+//                System.out.println(someClass.getName());
+//            }
+//            --------iterator pattern------
+
+
+
+
+
+
+//            Restaurant restaurant = new Restaurant();
+//            Waiter waiter = new WaiterImpl(restaurant);
+//
+//            Client firstClient = new Client("Alex", waiter);
+//            Client secondClient = new Client("Vasyl", waiter);
+//
+//            firstClient.placeOrder("HotDog");
+//            secondClient.placeOrder("Pizza");
+//
+//            restaurant.prepareFood("HotDog");
+//            restaurant.prepareFood("Pizza");
+//
+//            waiter.serveOrder("HotDog", firstClient);
+//            waiter.serveOrder("Pizza", secondClient);
+//
+//            firstClient.eat();
+//            secondClient.eat();
+//            -------mediator pattern
+
+
+
+
+
+
+
+
+//            CoffeeMachine coffeeMachine = new CoffeeMachine();
+//            CoffeeMachineHistory history = new CoffeeMachineHistory();
+//
+//            coffeeMachine.setCoffeeType("Espresso");
+//
+//            history.addMemento(coffeeMachine.saveStateToMemento());
+//
+//            coffeeMachine.setCoffeeType("Latte");
+//
+//            history.addMemento(coffeeMachine.saveStateToMemento());
+//
+//            coffeeMachine.restoreStateFromMemento(history.getMemento(0));
+//            System.out.println("Current Coffee Type: " + coffeeMachine.getCoffeeType());
+//            --------memento
+
+
+
+
+//            Breakfast beckonBreakfast = new BeckonBreakfast();
+//            Breakfast sausageBreakfast = new SausageBreakfast();
+//
+//            System.out.println("Preparing beckon breakfast:");
+//            beckonBreakfast.prepareBreakfast();
+//
+//            System.out.println("\nPreparing sausage breakfast:");
+//            sausageBreakfast.prepareBreakfast();
+//            -------template pattern
+
+
+
+
+
+
 
 
 
