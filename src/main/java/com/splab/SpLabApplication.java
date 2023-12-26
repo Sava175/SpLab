@@ -12,6 +12,7 @@ import com.splab.patterns.behavioralPatterns.state.Food;
 import com.splab.patterns.behavioralPatterns.state.WellDoneLevel;
 import com.splab.patterns.behavioralPatterns.state.SpoiledLevel;
 import com.splab.patterns.behavioralPatterns.state.Level;
+import com.splab.patterns.behavioralPatterns.visitor.*;
 
 
 public class SpLabApplication {
@@ -173,6 +174,23 @@ public class SpLabApplication {
 //        System.out.println("\nPreparing sausage breakfast:");
 //        sausageBreakfast.prepareBreakfast();
 //        -------template
+
+
+
+
+
+
+
+//        CarPart engine = new Engine();
+//        CarPart wheel = new Wheel();
+//        CarPart body = new Body();
+//
+//        CarPartVisitor repairVisitor = new CarPartRepairVisitor();
+//
+//        engine.accept(repairVisitor);
+//        wheel.accept(repairVisitor);
+//        body.accept(repairVisitor);
+//        ---------visitor
 
 
 
