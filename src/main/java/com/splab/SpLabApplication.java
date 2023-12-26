@@ -9,6 +9,7 @@ package com.splab;
 
 
 import com.splab.patterns.creationPatterns.builder.*;
+import com.splab.patterns.structuralPatterns.facade.FoodOrderFacade;
 
 
 public class SpLabApplication {
@@ -63,8 +64,8 @@ public class SpLabApplication {
 //            MenuPosition menuPosition = restaurantMenu.next();
 //            System.out.println("the price of " +menuPosition.getName() + " is " + menuPosition.getPrice());
 //        }
-//            --------iterator pattern
         // rewrote - done
+        //            --------iterator pattern
 
 
 
@@ -182,8 +183,8 @@ public class SpLabApplication {
 //                .build();
 //
 //        System.out.println(food);
-//            -------builder------- create myself
         //done
+        //            -------builder
 
 
 
@@ -221,7 +222,7 @@ public class SpLabApplication {
 //
 //        ProductionManager secondManager = ProductionManager.getInstance("Huba", "Buba");
 //        secondManager.manageProduction();
-//            --------------this is example of singleton
+//            --------------singleton
 
 
 
@@ -272,13 +273,10 @@ public class SpLabApplication {
 
 
 
-//        Office office = new Office();
-//        office.getRooms().addAll(List.of(new Toilet(), new Kitchen(), new WorkCabinet()));
-//        for (Room room : office.getRooms()) {
-//            room.roomPurpose();
-//        }
-//            -------facade
-        // -----read more   rebuild
+//        FoodOrderFacade foodOrderFacade = new FoodOrderFacade();
+//        foodOrderFacade.placeOrder("Hot Dog", 2, "Berliner street");
+        // -----read more   rebuild   -----done
+        //            -------facade
 
 
 
