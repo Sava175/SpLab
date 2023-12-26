@@ -8,8 +8,8 @@ package com.splab;
 //import com.splab.patterns.behavioralPatterns.template.*;
 
 
-import com.splab.patterns.creationPatterns.builder.*;
-import com.splab.patterns.structuralPatterns.facade.FoodOrderFacade;
+import com.splab.patterns.structuralPatterns.flyweight.Food;
+import com.splab.patterns.structuralPatterns.flyweight.Restaurant;
 
 
 public class SpLabApplication {
@@ -282,12 +282,18 @@ public class SpLabApplication {
 
 
 
-//        Person first = Person.createPerson("Alex", "Dev");
-//        Person second = Person.createPerson("Vasyl", "Dev");
-//        System.out.println(first);
-//        System.out.println(second);
-//            -----flyweight-----
-        // read again
+
+        Restaurant foodFactory = new Restaurant();
+
+        Food soup = foodFactory.getFood("soup", 7);
+        Food hotDog = foodFactory.getFood("hot dog", 5);
+        Food fruitPlate = foodFactory.getFood("fruit plate", 3);
+
+        soup.serveFood();
+        hotDog.serveFood();
+        fruitPlate.serveFood();
+        // rewrote this pattern
+//            -----flyweight
 
 
 
