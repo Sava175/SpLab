@@ -1,4 +1,4 @@
-package com.splab.patterns.behavioralPatterns.Command;
+package com.splab.patterns.behavioralPatterns.command;
 
 public class RemoteControl {
     private Command command;

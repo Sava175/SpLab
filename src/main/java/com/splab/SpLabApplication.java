@@ -1,8 +1,15 @@
 package com.splab;
 
 
-import com.splab.patterns.behavioralPatterns.iterator.MenuPosition;
-import com.splab.patterns.behavioralPatterns.iterator.RestaurantMenu;
+//import com.splab.patterns.behavioralPatterns.mediator.*;
+//import com.splab.patterns.behavioralPatterns.memento.*;
+//import com.splab.patterns.behavioralPatterns.observer.*;
+//import com.splab.patterns.behavioralPatterns.strategy.*;
+//import com.splab.patterns.behavioralPatterns.template.*;
+
+
+import com.splab.patterns.creationPatterns.builder.*;
+
 
 public class SpLabApplication {
 
@@ -166,14 +173,17 @@ public class SpLabApplication {
 
 
 
-//        Donner kebab = Donner.builder()
-//                .id(1)
-//                .bunType("white")
-//                .sausageType("with cheese")
-//                .cost(5)
+
+//        HotDog food = new HotDog.FoodBuilder()
+//                .setBun("Steak")
+//                .setSide("Mashed Potatoes")
+//                .setToAdd("Red Wine")
+//                .setCost(5)
 //                .build();
-//        System.out.println(kebab);
+//
+//        System.out.println(food);
 //            -------builder------- create myself
+        //done
 
 
 
