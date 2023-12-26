@@ -8,8 +8,10 @@ package com.splab;
 //import com.splab.patterns.behavioralPatterns.template.*;
 
 
-import com.splab.patterns.structuralPatterns.flyweight.Food;
-import com.splab.patterns.structuralPatterns.flyweight.Restaurant;
+import com.splab.patterns.behavioralPatterns.state.Food;
+import com.splab.patterns.behavioralPatterns.state.WellDoneLevel;
+import com.splab.patterns.behavioralPatterns.state.SpoiledLevel;
+import com.splab.patterns.behavioralPatterns.state.Level;
 
 
 public class SpLabApplication {
@@ -134,6 +136,17 @@ public class SpLabApplication {
 
 
 
+//        Food iWant = new Food();
+//        iWant.getCurrentLevel().finishCooking();
+//        iWant.setState(new WellDoneLevel());
+//        iWant.continueCooking();
+//        iWant.finishCooking();
+//        ------state pattern
+
+
+
+
+
 
 //        int[] numbers = {34, 6, 72, 3, 49, 67, 0, 98, 98, 6, 98, 34};
 //        Sorter sorter = new Sorter();
@@ -175,14 +188,14 @@ public class SpLabApplication {
 
 
 
-//        HotDog food = new HotDog.FoodBuilder()
+//        HotDog wellCooked = new HotDog.FoodBuilder()
 //                .setBun("Steak")
 //                .setSide("Mashed Potatoes")
 //                .setToAdd("Red Wine")
 //                .setCost(5)
 //                .build();
 //
-//        System.out.println(food);
+//        System.out.println(wellCooked);
         //done
         //            -------builder
 
@@ -283,15 +296,15 @@ public class SpLabApplication {
 
 
 
-        Restaurant foodFactory = new Restaurant();
-
-        Food soup = foodFactory.getFood("soup", 7);
-        Food hotDog = foodFactory.getFood("hot dog", 5);
-        Food fruitPlate = foodFactory.getFood("fruit plate", 3);
-
-        soup.serveFood();
-        hotDog.serveFood();
-        fruitPlate.serveFood();
+//        Restaurant foodFactory = new Restaurant();
+//
+//        Food soup = foodFactory.getFood("soup", 7);
+//        Food hotDog = foodFactory.getFood("hot dog", 5);
+//        Food fruitPlate = foodFactory.getFood("fruit plate", 3);
+//
+//        soup.serveFood();
+//        hotDog.serveFood();
+//        fruitPlate.serveFood();
         // rewrote this pattern
 //            -----flyweight
 
@@ -314,9 +327,9 @@ public class SpLabApplication {
 
             /*
             diagrams
-            delete spring
+            delete spring - done
             exp what for
-            add interfaces
+            add interfaces - done
              */
 
 
