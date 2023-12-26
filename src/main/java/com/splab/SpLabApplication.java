@@ -1,23 +1,49 @@
 package com.splab;
 
-import com.splab.patterns.template.Breakfast;
-import com.splab.patterns.template.BeckonBreakfast;
-import com.splab.patterns.template.SausageBreakfast;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+
+import com.splab.patterns.behavioralPatterns.template.BeckonBreakfast;
+import com.splab.patterns.behavioralPatterns.template.Breakfast;
+import com.splab.patterns.behavioralPatterns.template.SausageBreakfast;
 
 
-@SpringBootApplication
+
+
+
 public class SpLabApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpLabApplication.class, args);
+        System.out.println("Hello world");
+
+        Breakfast beckonBreakfast = new BeckonBreakfast();
+        Breakfast sausageBreakfast = new SausageBreakfast();
+
+        System.out.println("Preparing beckon breakfast:");
+        beckonBreakfast.prepareBreakfast();
+
+        System.out.println("\nPreparing sausage breakfast:");
+        sausageBreakfast.prepareBreakfast();
+
     }
-    @Bean
-    CommandLineRunner init (){
-        return args -> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //            IceCreamLover iceCreamClient = new IceCreamLover();
 //            iceCreamClient.enjoyIceCream(new AppleIceFactory());
@@ -108,7 +134,7 @@ public class SpLabApplication {
 
 
 
-//
+
 //            Donner kebab = Donner.builder()
 //                    .id(1)
 //                    .bunType("white")
@@ -116,7 +142,7 @@ public class SpLabApplication {
 //                    .cost(5)
 //                    .build();
 //            System.out.println(kebab);
-//            -------builder-------
+//            -------builder------- create myself
 
 
 
@@ -134,11 +160,6 @@ public class SpLabApplication {
 
 
 
-//            DishToOrder borscht = new Borscht(new UkrainianCuisine());
-//            DishToOrder sausage = new Sausage(new GermanCuisine());
-//            borscht.makeOrder();
-//            sausage.makeOrder();
-//            -------bridge pattern
 
 
 
@@ -148,6 +169,7 @@ public class SpLabApplication {
 //            Oder table1 = new Oder(List.of(cola, chocolate));
 //            System.out.println(table1);
 //            --------composite
+            //to read
 
 
 
@@ -157,6 +179,7 @@ public class SpLabApplication {
 //                room.roomPurpose();
 //            }
 //            -------facade
+            // -----read more   rebuild
 
 
 //            Person first = Person.createPerson("Alex", "Dev");
@@ -164,6 +187,7 @@ public class SpLabApplication {
 //            System.out.println(first);
 //            System.out.println(second);
 //            -----flyweight-----
+            // read again
 
 
 
@@ -214,6 +238,7 @@ public class SpLabApplication {
 //                System.out.println(someClass.getName());
 //            }
 //            --------iterator pattern------
+            // rewrite
 
 
 
@@ -250,6 +275,7 @@ public class SpLabApplication {
 //            CoffeeMachineHistory history = new CoffeeMachineHistory();
 //
 //            coffeeMachine.setCoffeeType("Espresso");
+//            coffeeMachine.setCoffeeType(history.getMemento(1).getState());
 //
 //            history.addMemento(coffeeMachine.saveStateToMemento());
 //
@@ -276,31 +302,19 @@ public class SpLabApplication {
 
 
 
+//            DishToOrder borscht = new Borscht(new UkrainianCuisine());
+//            DishToOrder sausage = new Sausage(new GermanCuisine());
+//            borscht.makeOrder();
+//            sausage.makeOrder();
+//            -------bridge pattern
 
 
+            /*
+            diagrams
+            delete spring
+            exp what for
+            add interfaces
+             */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        };
-    }
 
 }
