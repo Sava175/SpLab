@@ -1,0 +1,13 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class EngineDiagnosticHandler
+class OilChangeHandler
+class ServiceHandler
+
+EngineDiagnosticHandler  -[#589df6,plain]-^  ServiceHandler          
+OilChangeHandler         -[#589df6,plain]-^  ServiceHandler          
+@enduml
