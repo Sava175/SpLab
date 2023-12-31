@@ -19,5 +19,8 @@ public class forShow {
         int totalDiscountAmount = totalDiscount.interpreter(alcohol);
 
         System.out.println("Discount for all your bottles will be " + totalDiscountAmount);
+
+        // read again and again
+        // read again and again
     }
 }
