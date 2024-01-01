@@ -1,13 +1,14 @@
 package com.splab.tasks;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class NineOne {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        LinkedList<String> numbers = new LinkedList<>();
+        List<String> numbers = new ArrayList<>();
         System.out.println("enter the command/number");
 
         while (true){
@@ -22,7 +23,7 @@ public class NineOne {
                 System.out.println("thank you for visit");
                 break;
             }else {
-                numbers.addLast(command);
+                numbers.add(command);
                 System.out.println("the number was successfully added. What next?");
             }
         }
