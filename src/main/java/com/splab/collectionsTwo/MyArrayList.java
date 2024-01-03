@@ -6,13 +6,13 @@ import java.util.Arrays;
 import java.util.Objects;
 
 @Data
-public class MyArrayList implements MyList{
+public class MyArrayList<W> implements MyList<W>{
     private static final int CAPACITY = 10;
-    private Integer[] array;
+    private Object[] array;
     private int size;
 
     public MyArrayList() {
-        this.array = new Integer[CAPACITY];
+        this.array = new Objects[CAPACITY];
         size = 0;
     }
 
@@ -27,23 +27,23 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public boolean contains(Integer object) {
+    public boolean contains(W object) {
         return indexOf(object) != -1; // return -1 if no object in house
     }
 
     @Override
-    public void add(Integer object) {
+    public void add(W object) {
         ensureCapacity();
         array[size++] = object;
 
     }
     @Override
-    public void add(int index, Integer object) {
+    public void add(int index, W object) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("no place for new element. Array is not so big");
         }
         ensureCapacity();
-        Integer[] newArray = new Integer[array.length + 1];
+        Object[] newArray = new Object[array.length + 1];
         System.arraycopy(array, 0, newArray, 0, index);
         newArray[index] = object;
         System.arraycopy(array, index, newArray, index + 1, size - index);
@@ -52,7 +52,7 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public boolean remove(Integer object) {
+    public boolean remove(W object) {
         int index = indexOf(object);
         if (index != -1) {
             System.arraycopy(array, index + 1, array, index, size - index - 1);
@@ -70,12 +70,12 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public Integer get(int index) {
-        return array[index];
+    public W get(int index) {
+        return (W) array[index];
     }
 
     @Override
-    public int indexOf(Integer object) {
+    public int indexOf(W object) {
         for (int i = 0; i < size; i++) {
             if (Objects.equals(object, array[i])) {
                 return i;
@@ -85,7 +85,7 @@ public class MyArrayList implements MyList{
     }
 
     @Override
-    public int lastIndexOf(Integer object) {
+    public int lastIndexOf(W object) {
         for (int i = size - 1; i >= 0; i--) {
             if (Objects.equals(object, array[i])) {
                 return i;

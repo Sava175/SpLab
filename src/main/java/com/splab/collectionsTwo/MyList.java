@@ -1,14 +1,14 @@
 package com.splab.collectionsTwo;
 
-public interface MyList {
+public interface MyList <W> {
     int size();
     boolean isEmpty();
-    boolean contains(Integer object);
-    void add(Integer object);
-    void add(int index, Integer object);
-    boolean remove(Integer object);
+    boolean contains(W object);
+    void add(W object);
+    void add(int index, W object);
+    boolean remove(W object);
     void clear();
-    Integer get(int index);
-    int indexOf(Integer object);
-    int lastIndexOf(Integer object);
+    W get(int index);
+    int indexOf(W object);
+    int lastIndexOf(W object);
 }

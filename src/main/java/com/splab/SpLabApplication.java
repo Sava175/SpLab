@@ -8,6 +8,7 @@ package com.splab;
 //import com.splab.patterns.behavioralPatterns.template.*;
 
 
+import com.splab.collectionsTwo.MyHashMap;
 import com.splab.patterns.behavioralPatterns.state.Food;
 import com.splab.patterns.behavioralPatterns.state.WellDoneLevel;
 import com.splab.patterns.behavioralPatterns.state.SpoiledLevel;
@@ -18,8 +19,10 @@ import com.splab.patterns.behavioralPatterns.visitor.*;
 public class SpLabApplication {
 
     public static void main(String[] args) {
-
-
+        MyHashMap<String, Integer> some = new MyHashMap<>();
+        some.put("Alex", 7);
+        MyHashMap<Integer, Integer> any = new MyHashMap<>();
+        System.out.println(some.get("Alex"));
 
 
 //        ServiceHandler oilChangeHandler = new OilChangeHandler();

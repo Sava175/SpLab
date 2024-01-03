@@ -1,15 +1,15 @@
 package com.splab.collectionsTwo;
 
-public class MyLinkedList implements MyList{
-    private Node head;
-    private Node tail;
+public class MyLinkedList<W> implements MyList<W>{
+    private Node<W> head;
+    private Node<W> tail;
     private int size;
 
-    private static class Node {
-        Integer value;
-        Node prev;
-        Node next;
-        Node(Integer value) {
+    private static class Node<W> {
+        W value;
+        Node<W> prev;
+        Node<W> next;
+        Node(W value) {
             this.value = value;
         }
     }
@@ -22,19 +22,19 @@ public class MyLinkedList implements MyList{
         return size == 0;
     }
     @Override
-    public boolean contains(Integer object) {
+    public boolean contains(W object) {
         return indexOf(object) != -1;
     }
     @Override
-    public void add(Integer object) {
+    public void add(W object) {
         add(size, object);
     }
     @Override
-    public void add(int index, Integer object) {
+    public void add(int index, W object) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
-        Node newNode = new Node(object);
+        Node<W> newNode = new Node<>(object);
         if (index == 0) {
             newNode.next = head;
             head = newNode;
@@ -43,7 +43,7 @@ public class MyLinkedList implements MyList{
             newNode.prev = tail;
             tail = newNode;
         } else {
-            Node current = getNode(index);
+            Node<W> current = getNode(index);
             newNode.prev = current.prev;
             newNode.next = current;
             current.prev.next = newNode;
@@ -53,8 +53,8 @@ public class MyLinkedList implements MyList{
         size++;
     }
     @Override
-    public boolean remove(Integer object) {
-        Node current = head;
+    public boolean remove(W object) {
+        Node<W> current = head;
         while (current != null) {
             if (current.value.equals(object)) {
                 if (current.prev == null) {
@@ -85,7 +85,7 @@ public class MyLinkedList implements MyList{
         size = 0;
     }
     @Override
-    public Integer get(int index) {
+    public W get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
@@ -93,8 +93,8 @@ public class MyLinkedList implements MyList{
         return getNode(index).value;
     }
     @Override
-    public int indexOf(Integer object) {
-        Node current = head;
+    public int indexOf(W object) {
+        Node<W> current = head;
         int index = 0;
         while (current != null) {
             if (current.value.equals(object)) {
@@ -106,8 +106,8 @@ public class MyLinkedList implements MyList{
         return -1;
     }
     @Override
-    public int lastIndexOf(Integer object) {
-        Node current = tail;
+    public int lastIndexOf(W object) {
+        Node<W> current = tail;
         int index = size - 1;
         while (current != null) {
             if (current.value.equals(object)) {
@@ -119,12 +119,12 @@ public class MyLinkedList implements MyList{
         return -1;
     }
 
-    private Node getNode(int index) {
+    private Node<W> getNode(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
 
-        Node current = head;
+        Node<W> current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }
