@@ -26,7 +26,7 @@ public class Sort {
         long startTime = System.nanoTime();
         int n = array.length;
         for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
+            int minIndex = i;                      //  6 3 5 5 8 8 3 6
             for (int j = i + 1; j < n; j++) {
                 if (array[j] < array[minIndex]) {
                     minIndex = j;
@@ -60,7 +60,7 @@ public class Sort {
 
         for (int i = 0; i < length - 1; i++) {
             for (int j = 0; j < length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
+                if (array[j] > array[j + 1]) {          //  6 3 2 5 8 8 3
                     int temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
@@ -89,13 +89,13 @@ public class Sort {
         long startTime = System.nanoTime();
         int n = array.length;
         for (int i = 1; i < n; ++i) {
-            int key = array[i];
-            int j = i - 1;
-            while (j >= 0 && array[j] > key) {
+            int key = array[i];  //3       //  6 3 2 5 8 8 3
+            int j = i - 1;      //0
+            while (j >= 0 && array[j] > key) {     //(0  >= 0  &&  6 > 3)
                 array[j + 1] = array[j];
                 j = j - 1;
             }
-            array[j + 1] = key;
+            array[j + 1] = key;  //3
         }
         long endTime = System.nanoTime();
         System.out.println("Insertion Sort Time: " + (endTime - startTime) + " ns");

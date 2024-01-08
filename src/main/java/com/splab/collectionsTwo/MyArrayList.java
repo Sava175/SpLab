@@ -3,6 +3,7 @@ package com.splab.collectionsTwo;
 import lombok.Data;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 @Data
@@ -12,13 +13,37 @@ public class MyArrayList<W> implements MyList<W>{
     private int size;
 
     public MyArrayList() {
-        this.array = new Objects[CAPACITY];
+        this.array = new Object[CAPACITY];
         size = 0;
     }
 
+    public static void main(String[] args) {
+        MyArrayList<String> stringList = new MyArrayList<>();
+        stringList.add("Apple");
+        stringList.add("Banana");
+        stringList.add("Orange");
+
+
+        System.out.println("Size of stringList: " + stringList.size());
+        System.out.println("Is stringList empty? " + stringList.isEmpty());
+        System.out.println("Elements in stringList: ");
+        for (int i = 0; i < stringList.size(); i++) {
+            System.out.println(stringList.get(i));
+        }
+        System.out.println("Does stringList contain 'Banana'? " + stringList.contains("Banana"));
+        stringList.remove("Banana");
+        System.out.println("Elements in stringList after removal: ");
+        for (int i = 0; i < stringList.size(); i++) {
+            System.out.println(stringList.get(i));
+        }
+        stringList.clear();
+        System.out.println("Size of stringList after clearing: " + stringList.size());
+    }
+
+
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override

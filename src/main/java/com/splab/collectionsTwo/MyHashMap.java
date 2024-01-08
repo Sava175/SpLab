@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public class MyHashMap<K, V> implements MyMap<K, V>{
+public class MyHashMap<K, V> implements MyMap<K, V> {
     private static final int DEFAULT_CAPACITY = 16;
     private static final double LOAD_FACTOR = 0.75;
 
@@ -22,7 +22,7 @@ public class MyHashMap<K, V> implements MyMap<K, V>{
 
 
     @Data
-    private static class Entry <K, V>{
+    private static class Entry<K, V> {
         K key;
         V value;
         Entry<K, V> next;
@@ -33,10 +33,37 @@ public class MyHashMap<K, V> implements MyMap<K, V>{
             this.next = null;
         }
     }
+
+    public static void main(String[] args) {
+        MyHashMap<String, Integer> myHashMap = new MyHashMap<>();
+        myHashMap.put("One", 1);
+        myHashMap.put("Two", 2);
+        myHashMap.put("Three", 3);
+
+        System.out.println("Size of MyHashMap: " + myHashMap.size());
+        System.out.println("Contents of MyHashMap: " + Arrays.toString(myHashMap.keyArray()));
+
+        String keyToGet = "Two";
+        Integer value = myHashMap.get(keyToGet);
+        System.out.println("Value for key '" + keyToGet + "': " + value);
+
+        String keyToRemove = "Three";
+        boolean removed = myHashMap.remove(keyToRemove);
+        System.out.println("Removed key '" + keyToRemove + "': " + removed);
+
+        System.out.println("Updated size of MyHashMap: " + myHashMap.size());
+        System.out.println("Updated contents of MyHashMap: " + Arrays.toString(myHashMap.keyArray()));
+
+        myHashMap.clear();
+        System.out.println("Size of MyHashMap after clear: " + myHashMap.size());
+    }
+
+
     @Override
     public int size() {
         return size;
     }
+
     @Override
     public boolean isEmpty() {
         return size == 0;
@@ -69,10 +96,11 @@ public class MyHashMap<K, V> implements MyMap<K, V>{
             resizeTable();
         }
     }
+
     @Override
     public boolean remove(K key) {
         if (key == null) {
-                throw new IllegalArgumentException("Key cannot be null");
+            throw new IllegalArgumentException("Key cannot be null");
         }
 
         int index = getIndex(key);
@@ -126,11 +154,7 @@ public class MyHashMap<K, V> implements MyMap<K, V>{
                 .filter(Objects::nonNull)
                 .flatMap(entry -> Stream.iterate(entry, Objects::nonNull, Entry::getNext))
                 .map(Entry::getKey)
-                .toArray(size -> {
-                    @SuppressWarnings("unchecked")
-                    K[] array = (K[]) Array.newInstance(table.getClass().getComponentType().getComponentType(), size);
-                    return array;
-                });
+                .toArray(size -> Arrays.copyOf(new Object[0], size, (Class<K[]>) new Object[0].getClass()));
     }
 
 
@@ -148,10 +172,10 @@ public class MyHashMap<K, V> implements MyMap<K, V>{
     }
 
 
-
     private int getIndex(K key) {
         return key.hashCode() % table.length;
     }
+
     private void resizeTable() {
         int newCapacity = table.length * 2;
         Entry<K, V>[] newTable = Arrays.copyOf(table, newCapacity);
@@ -167,9 +191,6 @@ public class MyHashMap<K, V> implements MyMap<K, V>{
         }
         table = newTable;
     }
-
-
-
 
 
 }

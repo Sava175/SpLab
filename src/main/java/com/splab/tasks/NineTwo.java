@@ -44,15 +44,25 @@ public class NineTwo {
     private static void addCarNumber(LinkedList<String> carNumbers, String command) {
         String[] parts = command.split(" ");
 
-                String carNumber = parts[0];
-                int position = Integer.parseInt(parts[1]);
+        String carNumber = parts[0];
+        int position = Integer.parseInt(parts[1]);
 
-                if (position <= 0 || position > carNumbers.size() + 1) {
-                    carNumbers.add(carNumber);
-                } else {
-                    carNumbers.add(position - 1, carNumber);
-                }
+        if (carNumbers.isEmpty()) {
+            carNumbers.addFirst(carNumber);
+            System.out.println("This list is empty, the number is placed as the first in this list.");
+        } else {
+            if (position <= carNumbers.size()) {
+                carNumbers.set(position - 1, carNumber);
+            } else {
+                carNumbers.add(carNumber);
+                System.out.println("Wrong position. Adding according the list");
+            }
+        }
     }
+
 }
+
+
+//wrong insertion
 
 
