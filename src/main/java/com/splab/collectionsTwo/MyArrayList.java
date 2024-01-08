@@ -3,7 +3,6 @@ package com.splab.collectionsTwo;
 import lombok.Data;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Objects;
 
 @Data
@@ -31,6 +30,7 @@ public class MyArrayList<W> implements MyList<W>{
             System.out.println(stringList.get(i));
         }
         System.out.println("Does stringList contain 'Banana'? " + stringList.contains("Banana"));
+        System.out.println("Last Index of 'Banana': " + stringList.lastIndexOf("Banana"));
         stringList.remove("Banana");
         System.out.println("Elements in stringList after removal: ");
         for (int i = 0; i < stringList.size(); i++) {
@@ -124,4 +124,6 @@ public class MyArrayList<W> implements MyList<W>{
             array = Arrays.copyOf(array, array.length * 2);
         }
     }
+
+
 }
