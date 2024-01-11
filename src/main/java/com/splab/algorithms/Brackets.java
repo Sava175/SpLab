@@ -77,26 +77,6 @@ public class Brackets {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private static boolean checkBrackets(String equation) {
         Stack<Character> stack = new Stack<>();
 
