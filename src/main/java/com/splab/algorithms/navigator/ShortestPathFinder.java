@@ -1,11 +1,8 @@
 package com.splab.algorithms.navigator;
 
 import lombok.Data;
-
 import java.util.*;
 
-
-// я имею и плачу эту передачу(( я нифига не понимаю уже второй день. Вернусь к этому заданию позже
 @Data
 public class ShortestPathFinder {
     private Map<String, Map<String, Integer>> graph;
@@ -14,42 +11,85 @@ public class ShortestPathFinder {
         graph = new HashMap<>();
     }
 
+    public static void main(String[] args) {
+        ShortestPathFinder pathFinder = new ShortestPathFinder();
+        initializeCities(pathFinder);
+        initializeRoads(pathFinder);
+
+        String fromCity = "Odessa";
+        String toCity = "Kyiv";
+        List<String> shortestPath = pathFinder.findShortestPath(fromCity, toCity);
+
+        System.out.println("Shortest Path from " + fromCity + " to " + toCity + ": " + shortestPath);
+        System.out.println("Total Distance: " + pathFinder.calculateTotalDistance(shortestPath));
+    }
+
+
+
+
+
+    private static void initializeCities(ShortestPathFinder pathFinder) {
+        String[] cities = {"Odessa", "Nikolaev", "Kherson", "Krivoy Rog", "Kropivnitsky",
+                "Uman", "Vinnitsa", "Kyiv", "Gutomir", "Khmelnitsky",
+                "Rivne", "Ternopol", "Lviv", "Poltava", "Symu", "Kharkiv", "Dnepr"};
+
+        for (String city : cities) {
+            pathFinder.addCity(city);
+        }
+    }
+
+    private static void initializeRoads(ShortestPathFinder pathFinder) {
+        pathFinder.addRoad("Odessa", "Nikolaev", 132);
+        pathFinder.addRoad("Odessa", "Uman", 271);
+        pathFinder.addRoad("Nikolaev", "Kherson", 71);
+        pathFinder.addRoad("Nikolaev", "Krivoy Rog", 204);
+        pathFinder.addRoad("Krivoy Rog", "Dnepr", 146);
+        pathFinder.addRoad("Dnepr", "Kharkiv", 216);
+        pathFinder.addRoad("Kharkiv", "Symu", 183);
+        pathFinder.addRoad("Kharkiv", "Poltava", 143);
+        pathFinder.addRoad("Kyiv", "Poltava", 342);
+        pathFinder.addRoad("Kyiv", "Uman", 212);
+        pathFinder.addRoad("Kyiv", "Gutomir", 140);
+        pathFinder.addRoad("Gutomir", "Rivne", 188);
+        pathFinder.addRoad("Lviv", "Rivne", 121);
+        pathFinder.addRoad("Lviv", "Ternopol", 127);
+        pathFinder.addRoad("Khmelnitsky", "Ternopol", 111);
+        pathFinder.addRoad("Rivne", "Ternopol", 159);
+        pathFinder.addRoad("Khmelnitsky", "Vinnitsa", 122);
+        pathFinder.addRoad("Uman", "Vinnitsa", 160);
+        pathFinder.addRoad("Uman", "Kropivnitsky", 167);
+        pathFinder.addRoad("Dnepr", "Kropivnitsky", 245);
+        pathFinder.addRoad("Krivoy Rog", "Kropivnitsky", 119);
+    }
+
     public void addCity(String city) {
         graph.put(city, new HashMap<>());
     }
 
-    public void addRoad(String city1, String city2, int distance) {
-        graph.get(city1).put(city2, distance);
-        graph.get(city2).put(city1, distance);
+    public void addRoad(String fromCity, String toCity, int distance) {
+        graph.get(fromCity).put(toCity, distance);
+        graph.get(toCity).put(fromCity, distance);
     }
 
     public List<String> findShortestPath(String startCity, String endCity) {
         Map<String, Integer> distances = new HashMap<>();
         Map<String, String> previousCities = new HashMap<>();
         PriorityQueue<String> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(distances::get));
-        // будет проходить сортировка при добавлении в priorityQueue на основе integer в Map distances
 
-//           ключи     значения
-//        Map<String, Map<String, Integer>> graph;
-        for (String city : graph.keySet()) {    // получаем с графа ключи "названия городов"
-            if (city.equals(startCity)) {       // по его значениям Map<String, Integer>
+        for (String city : graph.keySet()) {
+            if (city.equals(startCity)) {
                 distances.put(city, 0);
             } else {
                 distances.put(city, Integer.MAX_VALUE);
             }
             priorityQueue.add(city);
         }
+        System.out.println(priorityQueue);
 
-//                                                                      ключи        значения
-//                                                                  Map<String, Map<String, Integer>> graph;
-        //                                                            String some =     graph.getKey
-        //                                                            int some =        graph.getValue
+
         while (!priorityQueue.isEmpty()) {
             String currentCity = priorityQueue.poll();
 
-//               ключи        значения
-//            Map<String, Map<String, Integer>> graph;
-//                                                        получить по ключу
             for (Map.Entry<String, Integer> neighbor : graph.get(currentCity).entrySet()) {
                 int newDistance = distances.get(currentCity) + neighbor.getValue();
                 if (newDistance < distances.get(neighbor.getKey())) {
@@ -78,30 +118,5 @@ public class ShortestPathFinder {
             totalDistance += graph.get(path.get(i)).get(path.get(i + 1));
         }
         return totalDistance;
-    }
-
-    public static void main(String[] args) {
-        ShortestPathFinder pathFinder = new ShortestPathFinder();
-
-
-        pathFinder.addCity("A");
-        pathFinder.addCity("B");
-        pathFinder.addCity("C");
-
-
-        pathFinder.addRoad("A", "B", 2);
-        pathFinder.addRoad("B", "C", 3);
-        pathFinder.addRoad("A", "C", 5);
-
-
-        String startCity = "A";
-        String endCity = "C";
-
-
-        List<String> shortestPath = pathFinder.findShortestPath(startCity, endCity);
-
-
-        System.out.println("Shortest Path from " + startCity + " to " + endCity + ": " + shortestPath);
-        System.out.println("Total Distance: " + pathFinder.calculateTotalDistance(shortestPath));
     }
 }
