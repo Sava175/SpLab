@@ -1,5 +1,8 @@
 package com.splab.algorithms.encrypt;
 
+import lombok.Data;
+
+@Data
 public class Encryptor {
     private ReadAble reader;
     private EncryptAble enc;

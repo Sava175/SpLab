@@ -4,6 +4,9 @@ import lombok.Data;
 
 
 import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LikeJSON2 {
 
@@ -90,6 +93,7 @@ public class LikeJSON2 {
         private String name;
         private int age;
         private LivingPlace livingPlace;
+
 
         public Man(String name, int age, LivingPlace livingPlace) {
             this.name = name;

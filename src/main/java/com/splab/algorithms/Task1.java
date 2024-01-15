@@ -13,6 +13,7 @@ public class Task1 {
         int [] array = fillTheArrayIn(arraySize);
         boolean foundIt = true;
 
+
         while (foundIt){
             System.out.println("Now pls enter the digit and i'll give u index using usual loop");
             int digit = scanner.nextInt();

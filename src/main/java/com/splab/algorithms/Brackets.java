@@ -25,8 +25,6 @@ public class Brackets {
     }
 
 
-
-
     public static boolean checking (String input) {
         char[] chars = input.toCharArray();
         int length = chars.length;
@@ -38,10 +36,7 @@ public class Brackets {
                 char matchingBracket = findMatchingBracket(currentChar);
                 int closingIndex = findClosingBracketIndex(chars, i + 1, length, matchingBracket);
 
-                if (closingIndex == -1 || closingIndex >= length) {
-                    return false;
-                }
-                if (chars[closingIndex] != matchingBracket) {
+                if (closingIndex == -1 || closingIndex >= length || chars[closingIndex] != matchingBracket) {
                     return false;
                 }
                 i = closingIndex;
@@ -63,20 +58,21 @@ public class Brackets {
     }
 
     private static char findMatchingBracket(char openingBracket) {
-        switch (openingBracket) {
-            case '(':
-                return ')';
-            case '{':
-                return '}';
-            case '[':
-                return ']';
-            default:
-                throw new IllegalArgumentException("Invalid opening bracket: " + openingBracket);
-        }
+        return switch (openingBracket) {
+            case '(' -> ')';
+            case '{' -> '}';
+            case '[' -> ']';
+            default -> throw new IllegalArgumentException("Invalid opening bracket: " + openingBracket);
+        };
     }
 
 
+// check again the summer of each brac...
 
+
+
+
+//------------------------------------------------------------
     private static boolean checkBrackets(String equation) {
         Stack<Character> stack = new Stack<>();
 
@@ -98,6 +94,7 @@ public class Brackets {
         }
         return stack.isEmpty();
     }
+    //-------------------------------------------------------------
 
 
 }

@@ -11,8 +11,8 @@ public class App {
         generateRoads(vertices);
 
 
-        Vertex startVertex = findVertexByName(vertices, "Lviv");
-        Vertex endVertex = findVertexByName(vertices, "Nikolaev");
+        Vertex startVertex = findVertexByName(vertices, "Odessa");
+        Vertex endVertex = findVertexByName(vertices, "Lviv");
         dijkstra.compute(startVertex);
         System.out.println(endVertex.getDistance());
         dijkstra.showPass(endVertex);

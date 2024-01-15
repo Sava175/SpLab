@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Sort {
     public static void main(String[] args) {
-        int[] array = {12, 11, 13, 5, 6};
+        int[] array = {12, 11, 13, 5, 6, 4};
         System.out.println("bubble sort " + Arrays.toString(bubbleSort(array.clone())));
         System.out.println("selection sort " + Arrays.toString(selectionSort(array.clone())));
         System.out.println("insertion sort " + Arrays.toString(insertionSort(array.clone())));

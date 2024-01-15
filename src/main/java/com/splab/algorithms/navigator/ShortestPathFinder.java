@@ -17,7 +17,7 @@ public class ShortestPathFinder {
         initializeRoads(pathFinder);
 
         String fromCity = "Odessa";
-        String toCity = "Lviv";
+        String toCity = "Odessa";
         List<String> shortestPath = pathFinder.findShortestPath(fromCity, toCity);
 
         System.out.println("Shortest Path from " + fromCity + " to " + toCity + ": " + shortestPath);
