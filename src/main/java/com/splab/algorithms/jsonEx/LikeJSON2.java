@@ -1,117 +1,140 @@
 package com.splab.algorithms.jsonEx;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class LikeJSON2 {
 
     public static void main(String[] args) {
-        Man man = new Man("Alex", 35, new Man.LivingPlace("any street", 5, "Odessa"));
+
+        Man man = new Man();
         System.out.println(man);
+        Set<Integer> intSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
+        List<LivingPlace> livingPlaces = new LinkedList<>();
+        Map<String, Integer> stringDoubleMap = new HashMap<>(Map.of("first", 27, "Alex", 35));
+        System.out.println(convertMapToJson(stringDoubleMap));
+
+        man.setName("John");
+        man.setAge(30);
+        livingPlaces.add(new LivingPlace("any street", 7, "Odessa"));
+        livingPlaces.add(new LivingPlace("any other street", 9, "Odessa is good"));
+        man.setLivingPlace(livingPlaces);
+        man.setIntegerSet(intSet);
+        man.setBills(new HashSet<>(Arrays.asList(123, 456)));
+        man.setPeoples(Map.of("Vasyl", 27, "Alex", 35));
+        man.setPhones(Arrays.asList(123456789, 987654321));
 
         String json = convertToJson(man);
-        System.out.println("JSON variant " + json);
+        System.out.println(json);
     }
 
 
-
-    public static String convertToJson(Object object) {
-        StringBuilder jsonBuilder = new StringBuilder();
-        convertObjectToJson(object, jsonBuilder);
-        return jsonBuilder.toString();
-    }
-
-    private static void convertObjectToJson(Object object, StringBuilder jsonBuilder) {
-        jsonBuilder.append("{");
-
-        Class<?> clazz = object.getClass();
-        Field[] fields = clazz.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-
-            try {
-                appendFieldToJson(field, object, jsonBuilder, fields);
-            } catch (IllegalAccessException e) {
-                handleFieldAccessException(e, field);
-            }
-        }
-
-        removeTrailingComma(jsonBuilder);
-        jsonBuilder.append("}");
-    }
-
-    private static void appendFieldToJson(Field field, Object object, StringBuilder jsonBuilder, Field[] fields) throws IllegalAccessException {
-        Object fieldValue = field.get(object);
-        jsonBuilder.append("\"").append(field.getName()).append("\":");
-
-        if (field.getType().isPrimitive() || fieldValue == null || field.getType().equals(String.class)) {
-            appendPrimitiveValueToJson(fieldValue, jsonBuilder);
-        } else {
-            convertObjectToJson(fieldValue, jsonBuilder);
-        }
-
-        addCommaIfNotLast(field, fields, jsonBuilder);
-    }
-    private static void appendPrimitiveValueToJson(Object value, StringBuilder jsonBuilder) {
-        if (value == null) {
-            jsonBuilder.append("null");
-        } else if (value instanceof String) {
-            jsonBuilder.append("\"").append(value).append("\"");
-        } else {
-            jsonBuilder.append(value);
-        }
-    }
-
-
-    private static void handleFieldAccessException(IllegalAccessException e, Field field) {
-        e.printStackTrace();
-        throw new RuntimeException("can not get to the field " + field.getName(), e);
-    }
-
-    private static void addCommaIfNotLast(Field currentField, Field[] fields, StringBuilder jsonBuilder) {
-        if (currentField != fields[fields.length - 1]) {
-            jsonBuilder.append(",");
-        }
-    }
-
-    private static void removeTrailingComma(StringBuilder jsonBuilder) {
-        if (jsonBuilder.charAt(jsonBuilder.length() - 1) == ',') {
-            jsonBuilder.deleteCharAt(jsonBuilder.length() - 1);
-        }
-    }
-
-
-
+    @AllArgsConstructor
+    @NoArgsConstructor
     @Data
     static class Man {
         private String name;
         private int age;
-        private LivingPlace livingPlace;
+        private List<LivingPlace> livingPlace;
+        private Set<Integer> bills;
+        private Map<String, Integer> peoples;
+        private List<Integer>phones;
+        private Set<Integer> integerSet;
 
+    }
 
-        public Man(String name, int age, LivingPlace livingPlace) {
-            this.name = name;
-            this.age = age;
-            this.livingPlace = livingPlace;
-        }
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    static class LivingPlace {
+        private String streetName;
+        private int streetNumber;
+        private String city;
+    }
 
-        @Data
-        static class LivingPlace {
-            private String streetName;
-            private int streetNumber;
-            private String city;
+    public static String convertToJson(Object object) {
+        Class<?> clazz = object.getClass();
+        Field[] fields = clazz.getDeclaredFields();
 
-            public LivingPlace(String streetName, int streetNumber, String city) {
-                this.streetName = streetName;
-                this.streetNumber = streetNumber;
-                this.city = city;
+        StringBuilder jsonBuilder = new StringBuilder("{");
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            String fieldName = field.getName();
+            Object fieldValue;
+
+            try {
+                fieldValue = field.get(object);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+                continue;
             }
+            jsonBuilder.append("\"").append(fieldName).append("\":");
+
+            if (fieldValue == null) {
+                jsonBuilder.append("null");
+            } else {
+                jsonBuilder.append(getFieldValueAsJson(field.getType(), fieldValue));
+            }
+            jsonBuilder.append(",");
         }
+
+        if (jsonBuilder.charAt(jsonBuilder.length() - 1) == ',') {
+            jsonBuilder.setLength(jsonBuilder.length() - 1);
+        }
+
+        jsonBuilder.append("}");
+
+        return jsonBuilder.toString();
+    }
+
+    private static String getFieldValueAsJson(Class<?> fieldType, Object fieldValue) {
+        if (fieldType.isAssignableFrom(Collection.class)) {
+            return convertCollectionToJson((Collection<?>) fieldValue);
+        } else if (fieldType.isArray()) {
+            return convertArrayToJson(fieldValue);
+        } else if (fieldType.isAssignableFrom(Map.class)) {
+            return convertMapToJson((Map<?, ?>) fieldValue);
+        } else {
+            return "\"" + fieldValue.toString() + "\"";
+        }
+    }
+
+    private static String convertCollectionToJson(Collection<?> collection) {
+        StringBuilder arrayBuilder = new StringBuilder("[");
+        for (Object item : collection) {
+            arrayBuilder.append("\"").append(item.toString()).append("\",");
+        }
+
+        if (arrayBuilder.charAt(arrayBuilder.length() - 1) == ',') {
+            arrayBuilder.setLength(arrayBuilder.length() - 1);
+        }
+
+        arrayBuilder.append("]");
+        return arrayBuilder.toString();
+    }
+
+    private static String convertArrayToJson(Object array) {
+        return convertCollectionToJson(Arrays.asList((Object[]) array));
+    }
+
+    private static String convertMapToJson(Map<?, ?> map) {
+        StringBuilder mapBuilder = new StringBuilder("{");
+        for (Map.Entry<?, ?> entry : map.entrySet()) {
+            mapBuilder.append("\"").append(entry.getKey().toString()).append("\":\"").append(entry.getValue().toString()).append("\",");
+        }
+
+        if (mapBuilder.charAt(mapBuilder.length() - 1) == ',') {
+            mapBuilder.setLength(mapBuilder.length() - 1);
+        }
+
+        mapBuilder.append("}");
+        return mapBuilder.toString();
     }
 }
