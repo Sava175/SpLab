@@ -1,6 +1,5 @@
 package com.splab.algorithms.jsonEx;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.lang.reflect.Field;
 import java.util.*;
 
-public class LikeJSON2 {
+public class LikeJSON {
 
     public static void main(String[] args) {
 
@@ -133,7 +132,6 @@ public class LikeJSON2 {
         if (mapBuilder.charAt(mapBuilder.length() - 1) == ',') {
             mapBuilder.setLength(mapBuilder.length() - 1);
         }
-
         mapBuilder.append("}");
         return mapBuilder.toString();
     }
