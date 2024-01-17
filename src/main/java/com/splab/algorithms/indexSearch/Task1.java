@@ -1,4 +1,4 @@
-package com.splab.algorithms;
+package com.splab.algorithms.indexSearch;
 
 import java.util.Arrays;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package com.splab.algorithms;
+package com.splab.algorithms.binaryTree;
 
 import lombok.Data;
 

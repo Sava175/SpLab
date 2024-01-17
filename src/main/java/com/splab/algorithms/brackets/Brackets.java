@@ -1,4 +1,4 @@
-package com.splab.algorithms;
+package com.splab.algorithms.brackets;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -15,12 +15,12 @@ public class Brackets {
             System.out.println("not good lettering");
         }
 
-        System.out.println("\n");
-        if (checking(equation)) {
-            System.out.println("brackets stay good");
-        } else {
-            System.out.println("not good lettering");
-        }
+//        System.out.println("\n");
+//        if (checking(equation)) {
+//            System.out.println("brackets stay good");
+//        } else {
+//            System.out.println("not good lettering");
+//        }
     }
 
     public static boolean checking(String input) {
