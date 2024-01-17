@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class ConsoleReader implements ReadAble {
     @Override
-    public String readMessage() {
+    public String writeMessage() {
         Scanner input = new Scanner(System.in);
-        System.out.println("print message");
+        System.out.println("write message");
         return input.nextLine();
     }
 }

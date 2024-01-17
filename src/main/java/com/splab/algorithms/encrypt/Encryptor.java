@@ -14,14 +14,15 @@ public class Encryptor {
         this.printer = printer;
     }
 
-    public void receiveMessage(){
-        String message = reader.readMessage();
-        String decMessage = enc.decrypt(message);
-        printer.sendMessage(decMessage);
-    }
     public void sendMessage(){
-        String message = reader.readMessage();
+        String message = reader.writeMessage();
         String encMessage = enc.encrypt(message);
-        printer.sendMessage(encMessage);
+        printer.printMessage(encMessage);
+    }
+
+    public void receiveMessage(){
+        String message = reader.writeMessage();
+        String decMessage = enc.decrypt(message);
+        printer.printMessage(decMessage);
     }
 }
