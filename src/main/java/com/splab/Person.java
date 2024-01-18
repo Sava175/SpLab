@@ -1,59 +1,48 @@
 package com.splab;
 
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Data
 public class Person {
 
-    private String name;
-    private int age;
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    @Override
-    public int hashCode() {
-        return 1;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Person person = (Person) obj;
-        return age == person.age && name.equals(person.name);
-    }
     public static void main(String[] args) {
 
-        HashMap<Person, String> personMap = new HashMap<>();
 
-        Person person1 = new Person("Alice", 25);
-        Person person2 = new Person("Bob", 30);
-
-        personMap.put(person1, "Student 1");
-        personMap.put(person2, "Student 2");
-
-        Person anotherPerson = new Person("Charlie", 22);
-        String value = personMap.get(anotherPerson);
-        System.out.println("Value for anotherPerson: " + value);
+        ImmutableList<Integer> immutableList = ImmutableList.of(1, 2, 3);
+        ImmutableSet<String> immutableSet = ImmutableSet.of("Alex", "Vasyl", "Dmitry");
+        ImmutableMap<String, Integer> immutableMap = ImmutableMap.of("Vasyl", 27, "Alex", 35);
 
 
+        List<Integer> useListOf = List.of(1, 2, 3);
+        Set<String> useSetOf = Set.of("Alex", "Vasyl", "Dmitry");
+        Map<String, Integer> useMapOf = Map.of("Vasyl", 27, "Alex", 35);
+
+        List<Integer> toMakeUnmodeList = Arrays.asList(1, 2, 3);
+        toMakeUnmodeList.add(0, 2);
+        List<Integer> unmodifiableList = Collections.unmodifiableList(toMakeUnmodeList);
+        unmodifiableList.add(0,3); // does not work. Give UnsupportedOperationException
+
+        Set<String> toMakeUnmodeSet = new HashSet<>(Arrays.asList("Alex", "Vasyl", "Dmitry"));
+        Set<String> set = Collections.unmodifiableSet(toMakeUnmodeSet);
+
+        Map<String, Integer> toMakeUnmodeMap = new HashMap<>();
+        toMakeUnmodeMap.put("Vasyl", 27);
+        toMakeUnmodeMap.put("Alex", 35);
+        Map<String, Integer> map = Collections.unmodifiableMap(toMakeUnmodeMap);
+
+        List<Integer> useCopyOfList = List.copyOf(Arrays.asList(1, 2, 3));
+        Set<String> useCopyOfSet = Set.copyOf(new HashSet<>(Arrays.asList("Alex", "Vasyl", "Dmitry")));
+        Map<String, Integer> useCopyOfMap = Map.copyOf(new HashMap<>(Map.of("Vasyl", 27, "Alex", 35)));
+
+        useCopyOfList.add(0, 2);  // does not work. Give UnsupportedOperationException
 
 
-        int intValue = 101;
-        double doubleValue = 101.3;
-
-
-        String stringValue = "Hello";
-        Object objectValue = new Object();
-        int[] arrayValue = {1, 2, 3};
-        List<String> listValue = new ArrayList<>();
 
 
 
