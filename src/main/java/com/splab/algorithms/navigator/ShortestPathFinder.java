@@ -16,12 +16,13 @@ public class ShortestPathFinder {
         initializeCities(pathFinder);
         initializeRoads(pathFinder);
 
-        String fromCity = "Odessa";
-        String toCity = "Odessa";
+        String fromCity = "Vinnitsa";
+
+        String toCity = "Symu";
         List<String> shortestPath = pathFinder.findShortestPath(fromCity, toCity);
 
-        System.out.println("Shortest Path from " + fromCity + " to " + toCity + ": " + shortestPath);
-        System.out.println("Total Distance: " + pathFinder.calculateTotalDistance(shortestPath));
+        System.out.println("the best way to get from " + fromCity + " to " + toCity + " is " + shortestPath);
+        System.out.println("It took " + pathFinder.calculateTotalDistance(shortestPath) + " km to get where you want");
     }
 
 
