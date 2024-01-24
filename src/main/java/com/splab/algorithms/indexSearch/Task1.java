@@ -11,19 +11,15 @@ public class Task1 {
         System.out.println("Pls enter the size of array u want to create");
         int arraySize = scanner.nextInt();
         int [] array = fillTheArrayIn(arraySize);
-        boolean foundIt = true;
 
-
-        while (foundIt){
             System.out.println("Now pls enter the digit and i'll give u index using usual loop");
             int digit = scanner.nextInt();
-            foundIt = usualSearch(array, digit);
+            usualSearch(array, digit);
 
             System.out.println("Now enter digit again i'll show, how quick it will find it with binary search");
             Arrays.sort(array);
-            int digitTwo = scanner.nextInt();
-            foundIt = binarySearch(array, digitTwo);
-        }
+            binarySearch(array, digit);
+
     }
 
 
@@ -37,20 +33,20 @@ public class Task1 {
         return array;
     }
 
-    public static boolean usualSearch(int[] array, int digit){
+    public static void usualSearch(int[] array, int digit){
         int steps = 0;
         for (int i = 0; i < array.length; i++) {
             steps++;
             if (array[i] == digit){
                 System.out.println("index of the digit is " + i + " . It took " + steps + " to find digit");
-                return false;
+                return;
             }
         }
         System.out.println("digit is not here");
-        return true;
+
     }
 
-    private static boolean binarySearch(int[] array, int target) {
+    private static void binarySearch(int[] array, int target) {
         int left = 0;
         int right = array.length - 1;
         int steps = 0;
@@ -61,7 +57,7 @@ public class Task1 {
 
             if (array[mid] == target) {
                 System.out.println("index of your digit is " + array[mid] + " . It took " + steps + " to find digit");
-                return false;
+                return;
             } else if (array[mid] < target) {
                 left = mid + 1;
             } else {
@@ -69,7 +65,6 @@ public class Task1 {
             }
         }
         System.out.println("no digit in array");
-        return true;
     }
 
 }

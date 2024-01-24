@@ -1,9 +1,5 @@
 package com.splab.algorithms.jsonEx;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -14,9 +10,14 @@ public class LikeJSON {
 
         Man man = new Man();
         System.out.println(man);
+
+        convertToJson(man);
+        System.out.println(convertToJson(man));
+
         Set<Integer> intSet = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5));
         List<LivingPlace> livingPlaces = new LinkedList<>();
         Map<String, Integer> stringDoubleMap = new HashMap<>(Map.of("first", 27, "Alex", 35));
+        System.out.println("\n\n");
         System.out.println(convertMapToJson(stringDoubleMap));
 
         man.setName("John");
@@ -33,29 +34,6 @@ public class LikeJSON {
         System.out.println(json);
     }
 
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Data
-    static class Man {
-        private String name;
-        private int age;
-        private List<LivingPlace> livingPlace;
-        private Set<Integer> bills;
-        private Map<String, Integer> peoples;
-        private List<Integer>phones;
-        private Set<Integer> integerSet;
-
-    }
-
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Data
-    static class LivingPlace {
-        private String streetName;
-        private int streetNumber;
-        private String city;
-    }
 
     public static String convertToJson(Object object) {
         Class<?> clazz = object.getClass();
